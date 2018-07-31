@@ -13,8 +13,8 @@ function logindo() {
     var username = $("#usn").val();
     var password = $("#pws").val();
     if(!username || !password){
-        // var msg = $("#msg").val();
-        $("#msg").val() = "用户名或密码不能为空";
+        var msg = document.getElementById("msg");
+        msg.innerText = "用户名或密码不能为空";
         return;
     }
     //读取用户的输入——表单序列化
@@ -27,8 +27,7 @@ function logindo() {
         "datatype":"json",
         "success":function(obj) {
             if (obj.state == 1) {
-                saveCookie();
-                window.location = "./index";
+                window.location = "/";
             } else if (obj.state == -1) {
                 alert(obj.message);
                 $("#showResult").text(obj.message);
