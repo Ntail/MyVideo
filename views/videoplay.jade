@@ -1,0 +1,13 @@
+extends layout
+
+block content
+
+  iframe(id="baiyug" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" allowfullscreen="true" scrolling="no" src= videodata height="100%" width="100%")
+
+  ur
+    - for(var i=0; i<videodata.length; i++)
+      li
+        a(href="./videoplay?url="+videodata[i].url title=videodata[i].name)
+          p=videodata[i].name
+
+  
