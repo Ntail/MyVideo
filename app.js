@@ -4,40 +4,13 @@ var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 var video = require('./routes/video');
 
 var app = express();
-
-// 拦截器 过滤所有请求 验证用户是否登录
-// 所有用户可以访问index.html, error.html
-// admin可以访问admin.html, /getData
-// 登陆用户可以访问home.html
-app.all('/*', function(request, res, next){
-  // 思路：
-  // 得到请求的url
-  // 然后得到request的cookie，根据cookie得到当前登陆的用户
-  // 判断用户对应url的权限
-  var jsPattern=/\.js$/;
-  var url=request.originalUrl;
-  if(jsPattern.test(url)){
-  // 公共部分，放行
-      next();
-      return;
-  }
-  if(url.indexOf('index')>-1 || url.indexOf('error')>-1 || url.index('login')>-1){
-      next();
-      return;
-  }
-  var cookie=JSON.stringify(request.cookies);
-  if(cookie){
-      next();
-  }else{
-      res.render('login');
-  }
-});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -50,6 +23,25 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+  resave: true,  // 新增(启动报错问题)// 即使 session 没有被修改，也保存 session 值，默认为 true
+  saveUninitialized: true,  // 新增
+  secret: 'hubwiz app', //secret的值建议使用随机字符串
+  cookie: {maxAge: 60 * 1000 * 30} // 过期时间（毫秒）
+}));
+
+//登录拦截器
+app.use(function (req, res, next) {
+  var url = req.originalUrl;
+  if(url.indexOf("/login") > -1){
+    next();
+    return;
+  }
+  if (url.indexOf("/index") < 0 && !req.session.name) {
+      return res.redirect("/users/login");
+  }
+  next();
+});
 
 app.use('/', index);
 app.use('/users', users);

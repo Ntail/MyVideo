@@ -12,8 +12,19 @@ router.get('/login', function(req, res, next) {
 });
 
 router.post('/login.do', function(req, res, next) {
-    console.info(req);
-    res.send(req.body.username+'用户名或密码错误');
+    
+    var info = {
+        state:-1,
+        message:""
+    };
+    if(req.body.username == "miss" && req.body.password == "123456li"){
+        req.session.sign = true;
+        req.session.name = "miss";
+        info.state = 1;
+    }else{
+        info.message = "用户名或密码错误";
+    }
+    res.json(info);
 });
 
 module.exports = router;
