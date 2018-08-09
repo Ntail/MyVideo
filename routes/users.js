@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 
 /* GET users listing. */
 router.get('/login', function(req, res, next) {
-    res.render('login', { title: '登陆' });
+    res.render('login', { title: '欢迎登陆' });
 });
 
 router.post('/login.do', function(req, res, next) {
@@ -17,7 +17,7 @@ router.post('/login.do', function(req, res, next) {
         state:-1,
         message:""
     };
-    if(req.body.username == "miss" && req.body.password == "123456li"){
+    if(req.body.lname == "miss" && req.body.lwd == "123456li"){
         req.session.sign = true;
         req.session.name = "miss";
         info.state = 1;

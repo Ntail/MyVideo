@@ -6,12 +6,11 @@ function checkInfo(){
         msg.innerText = "用户名或密码不能为空";
         return;
     }
-
 }
 
 function logindo() {
-    var username = $("#usn").val();
-    var password = $("#pws").val();
+    var username = $("#username").val();
+    var password = $("#password").val();
     if(!username || !password){
         var msg = document.getElementById("msg");
         msg.innerText = "用户名或密码不能为空";
@@ -29,7 +28,6 @@ function logindo() {
             if (obj.state == 1) {
                 window.location = "/";
             } else if (obj.state == -1) {
-                alert(obj.message);
                 $("#showResult").text(obj.message);
             }
         }
