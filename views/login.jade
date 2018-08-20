@@ -5,23 +5,22 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/stylesheets/loginstyle.css')
   body
-    h1= title
     div(id="container")
-      img(id="backdrop", src="")
+      img(id="backdrop", src="/images/login.jpg",style="margin: 0 auto;")
       div(id="cover", class="rt")
         form(id="login-form")
           div(class="txt")
-            p "登录"
+            p 登录
               span
-                a(href="#") "新用户注册"
+                a(href="#") 新用户注册
             div(class="text")
               input(type="text", placeholder="请输入您的用户名", name="lname", id="username", required)
             div(class="text")
               input(type="password", id="password", placeholder="请输入您的密码", name="lwd", required, minlength="6", maxlength="15")
             div(class="chose")
               input(type="checkbox", class="checkbox", id="ck_rmbUser", value="0")
-              | "自动登录"
-              span "忘记密码？"
+              | 自动登录
+              span 忘记密码？
             input(class="button_login", type="button", value="登录", id="bt-login" onclick="logindo()")
     div(id="showResult")
 

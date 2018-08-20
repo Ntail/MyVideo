@@ -13,8 +13,6 @@ router.get('/', function(req, res, next) {
 
 // 播放相应视频
 router.get('/videoplay', function(req, res, next) {
-    // http://4.wjsou.com/index.php?address=http://000o.cc/jx/ty.php?url=http://www.iqiyi.com/v_19rr96agog.html
-    // var url = "http://4.wjsou.com/index.php?address=http://000o.cc/jx/ty.php?url="+req.query.url;
     // 在后面加上?rel=0&amp;autoplay=1使视频自动播放
     res.render('videoplay', { title: '视频', videodata:"http://000o.cc/jx/ty.php?url=" + req.query.url +"?rel=0&amp;autoplay=1"});
 });
