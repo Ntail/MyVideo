@@ -1,12 +1,10 @@
-function checkInfo(){
-    var username = document.getElementById("usn");
-    var password = document.getElementById("pws");
-    if(username || password){
-        var msg = document.getElementById("msg");
-        msg.innerText = "用户名或密码不能为空";
-        return;
+$('#password').bind('keyup', function(event) {
+    alert(event);
+    if (event.keyCode == "13") {
+        //回车执行查询
+        $('#bt-login').click();
     }
-}
+})
 
 function logindo() {
     var username = $("#username").val();

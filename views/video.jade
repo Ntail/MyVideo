@@ -2,9 +2,8 @@ extends layout
 
 block content
   h1= title
-  ul
     - for(var i=0; i<videodata.length; i++)
-      li
+      dev(id="video")
         a(href="./videoplay?url="+videodata[i].url title=videodata[i].name)
           p=videodata[i].name
 

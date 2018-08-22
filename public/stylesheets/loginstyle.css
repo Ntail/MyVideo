@@ -2,17 +2,20 @@
     width: 100%;
     box-sizing: border-box;
     margin: 0px auto;
-    overflow-x: hidden;
+    /*overflow-x: hidden; 滑动*/
     height: 560px;
+    /*display:flex;
+    flex-direction:column;居中*/
 }
 
-#backdrop{
-    
-}
+/*#backdrop{
+    align-self:center;
+}*/
 
 #cover{
     position:relative;
-    float: right;
+    top: -612px;
+    left: 1200px;
     width: 280px;
     height: 296px;
     margin-right: 122px;
@@ -36,7 +39,7 @@
     border-bottom: 1px solid #f0f0f0;
 }
 #cover .txt p,#cover .txt p span a,#form-register .txt p,#form-register .txt p span a{
-    color:#fff;
+    color:rgb(240, 14, 14);
 }
 #cover .txt p,.container .txt p{
     font-size: 18px;
@@ -84,10 +87,10 @@
     top: 2px;
 }
 .button_login{
-    background: -moz-linear-gradient(top, #27b0f6 0%, #0aa1ed 100%);
+    /* background: -moz-linear-gradient(top, #27b0f6 0%, #0aa1ed 100%);
     background: -webkit-linear-gradient(top, #27b0f6 0%, #0aa1ed 100%);
     background: -o-linear-gradient(top, #27b0f6 0%, #0aa1ed 100%);
-    background: -ms-linear-gradient(top, #27b0f6 0%, #0aa1ed 100%);
+    background: -ms-linear-gradient(top, #27b0f6 0%, #0aa1ed 100%); */
     border-radius: 2px;
     color:#fff;
     text-align:center;

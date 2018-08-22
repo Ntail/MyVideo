@@ -26,7 +26,7 @@ router.get('/videolist', function(req, res, next) {
             return console.log(err);
         }
         var topicUrls = []; // 装入所有的 URL
-        
+        console.info(sres.text);
         var $ = cheerio.load(sres.text);
         // 获取首页所有的链接
         var list = $('.qy-mod-link-wrap').find('a');
